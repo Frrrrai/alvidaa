@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Instalador Alvidaa</title>
+  <script>
+    window.onload = function() {
+      var appUrl = "https://" + window.location.hostname + window.location.pathname.replace("install.html", "launcher/");
+      var iconUrl = appUrl + "favicon.ico";
+      
+      try {
+        if (typeof Hisense_installApp === "function") {
+          Hisense_installApp("alvidaa", "Alvidaa", iconUrl, appUrl, "store");
+          document.body.innerHTML = "<h2>¡Instalación completada! Comprueba 'Mis Aplicaciones' en la tele.</h2>";
+        } else {
+          document.body.innerHTML = "<h2>API bloqueada en este dominio.</h2>";
+        }
+      } catch (e) {
+        document.body.innerHTML = "<h2>Error: " + e.message + "</h2>";
+      }
+    };
+  </script>
+</head>
+<body style="background:#111; color:#fff; font-family:sans-serif; text-align:center; padding-top:100px;">
+  <h2>Instalando Alvidaa automáticamente...</h2>
+</body>
+</html>
